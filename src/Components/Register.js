@@ -22,9 +22,9 @@ const Register = () => {
         <form className='form register__form'>
           <p className='form__error-message'>This is a error message</p>
           <input placeholder='Full Name' type='text' name='name' value={userData.name} onChange={ChangeInputHandler} autoFocus/>
-          <input placeholder='Email' type='text' name='email' value={userData.email} onChange={ChangeInputHandler} autoFocus/>
-          <input placeholder='password' type='password' name='password' value={userData.password} onChange={ChangeInputHandler} autoFocus/>
-          <input placeholder='Confirm Password' type='password' name='password2' value={userData.password2} onChange={ChangeInputHandler} autoFocus/>
+          <input placeholder='Email' type='text' name='email' value={userData.email} onChange={ChangeInputHandler} />
+          <input placeholder='password' type='password' name='password' value={userData.password} onChange={ChangeInputHandler} />
+          <input placeholder='Confirm Password' type='password' name='password2' value={userData.password2} onChange={ChangeInputHandler} />
           <button className='btn primary'>Register</button>
         </form>
         <small>Already have an account? <Link to="/login">Sign In</Link></small>

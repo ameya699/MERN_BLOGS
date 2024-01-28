@@ -13,9 +13,10 @@ import Authors from "./Components/Authors"
 import CreatePost from "./Components/CreatePost"
 import CategoryPosts from "./Components/CategoryPosts"
 import AuthorPosts from "./Components/AuthorPosts"
-import Dashboard from "./Components/Dashboard"
+import Dashboard from './Components/Dashboard';
 import EditPost from "./Components/EditPost"
-import Logout from "./Components/Logout"
+import Logout from "./Components/Logout";
+import DeletePost from "./Components/DeletePost"
 
 const router=createBrowserRouter([
   {
@@ -34,7 +35,9 @@ const router=createBrowserRouter([
       {path:"posts/users/:id",element:<AuthorPosts/>},
       {path:"myposts/:id",element:<Dashboard/>},
       {path:"posts/:id/edit",element:<EditPost/>},
-      {path:"logout",element:<Logout/>},
+      {path:"posts/:id/delete",element:<DeletePost/>},
+      {path:"logout",element:<Logout/>}
+
     ]
   }
 ])
