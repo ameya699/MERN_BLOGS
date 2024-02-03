@@ -17,6 +17,7 @@ const Posts = () => {
       try{
         const response=await axios.get(`${process.env.REACT_APP_BASE_URL}/posts`);
         const data=await response.data;
+        console.log(data);
         setPosts(data);
       }
       catch(err){
@@ -34,7 +35,7 @@ const Posts = () => {
     <section className='posts'>
         {posts.length>0 ? <div className='container posts__container'>
         {
-            posts.map(({id,thumbnail,category,title,description,authorID,createdAt})=><PostItem key={id} postID={id} thumbnail={thumbnail} category={category} title={title} description={description} authorID={authorID} createdAt={createdAt}/>)
+            posts.map(({_id:id,thumbnail,category,title,description,creator,createdAt})=><PostItem key={id} postID={id} thumbnail={thumbnail} category={category} title={title} description={description} authorID={creator} createdAt={createdAt}/>)
         }
         </div>
       :<h2 className='center'>No Posts Found</h2>}

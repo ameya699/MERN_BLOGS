@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from "./assets/logo.png"
 import { FaBars } from "react-icons/fa";
@@ -7,6 +7,7 @@ import { UserContext } from './context/userContext';
 const Header = () => {
   const [isNavShowing,setIsNavShowing]=useState(window.innerWidth>800?true:false);
   const {currentUser}=useContext(UserContext);
+  
   const closeHandler=()=>{
     if(window.innerWidth<800){
       setIsNavShowing(false);
