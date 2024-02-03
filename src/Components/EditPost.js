@@ -1,12 +1,23 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css'
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/userContext';
 const EditPost = () => {
   const [title,setTitle]=useState('');
   const [category,setCategory]=useState('Uncategorized');
   const [description,setDescription]=useState('');
   const [thumbnail,setThumbnail]=useState('');
   const POST_CATEGORIES=["Agriculture","Business","Education","Entertainment","Art","Investment","uncategorized","Weather"]
+  const {currentUser}=useContext(UserContext);
+  const token=currentUser?.token;
+  const navigate=useNavigate();
+  useEffect(()=>{
+    if(!token){
+     navigate('/login');
+    }
+  },[])
+  
   const formats=[
     'header',
     'bold','italic','underline','strike','blockquote',

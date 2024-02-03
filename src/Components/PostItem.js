@@ -1,22 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Posts from "../Components/Posts"
 import {Link} from "react-router-dom"
 import PostAuthor from './PostAuthor'
-const PostItem = ({postID,thumbnail,desc,id,title,authorID,category}) => {
-    const shortdesc=desc.length>145?desc.substr(0,145)+'...':desc;
+
+const PostItem = ({postID,thumbnail,description,id,title,authorID,category,createdAt}) => {
+    const shortdescription=description.length>145?description.substr(0,145)+'...':description;
     const shorttitle=title.length>30?title.substr(0,40)+'...':title
   return (
     <article className='post'>
         <div className='post__thumbnail'>
-            <img src={thumbnail} alt={title}/>
+            <img src={`${process.env.REACT_APP_BASE_URL}/posts/thumbnail/${thumbnail}`} alt={thumbnail}/>
         </div>
         <div className='post__content'>
             <Link to={`/posts/${postID}`}>
                 <h3>{shorttitle}</h3>
             </Link>
-            <p>{shortdesc}</p>
+            <p>{shortdescription}</p>
             <div className='post__footer'>
-                <PostAuthor/>
+                <PostAuthor authorID={authorID} createdAt={createdAt}/>
                 <Link to={`/posts/categories/${category}`} className='btn category'>{category}</Link>
             </div>
         </div>
