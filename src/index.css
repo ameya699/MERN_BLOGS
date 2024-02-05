@@ -582,3 +582,20 @@ input,select,textarea{
     width: 5rem;
   }
 }
+
+.loader{
+  position: fixed;
+  top:50%;
+  left:0;
+  height: 10vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  background: var(--color-bg);
+
+}
+
+.loader_image{
+  width: 4.5rem;
+  aspect-ratio: 1/1;
+}
