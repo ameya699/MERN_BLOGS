@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import userlogo from "../assets/userlogo.png"
 import axios from "axios";
 import ReactTimeAgo from "react-time-ago";
@@ -13,6 +13,7 @@ TimeAgo.addLocale(ru);
 
 const PostAuthor = ({authorID,createdAt,thumbnail}) => {
   const [author,setAuthor]=useState({});
+ 
 useEffect(()=>{
   const getAuthor=async()=>{
     try{

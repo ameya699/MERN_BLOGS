@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Posts from "../Components/Posts"
 import {Link} from "react-router-dom"
 import PostAuthor from './PostAuthor'
 
-const PostItem = ({postID,thumbnail,description,id,title,authorID,category,createdAt}) => {
+const PostItem = ({postID,thumbnail,description,title,authorID,category,createdAt}) => {
     const shortdescription=description?.length>145?description.substr(0,145)+'...':description;
     const shorttitle=title.length>30?title.substr(0,40)+'...':title
   return (
