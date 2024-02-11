@@ -33,7 +33,7 @@ useEffect(()=>{
    <Link to={`/posts/users/${authorID}`} className='post__author'>
     <div className='post__author-avatar'>
       
-    {author?.avatar ?   <img src={`${process.env.REACT_APP_BASE_URL}/posts/thumbnail/${author?.avatar}`} alt={`${process.env.REACT_APP_BASE_URL}/posts/thumbnail/${author?.avatar}`}/>
+    {author?.avatar ?   <img src={`${process.env.REACT_APP_BASE_URL}/posts/thumbnail/${author?.avatar}`} alt={`${process.env.REACT_APP_BASE_URL}/posts/thumbnail/${author?.avatar}`} style={{aspectRatio:"unset"}}/>
     :
     <img src={userlogo} alt='userlogo'/>}
     </div>

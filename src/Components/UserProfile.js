@@ -13,6 +13,7 @@ const UserProfile = () => {
   const [newPassword,setNewPassword]=useState('');
   const [confirmNewPassword,setConfirmNewPassword]=useState('');
   const {currentUser}=useContext(UserContext);
+  const [error,setError]=useState('');
   const token=currentUser?.token;
   const navigate=useNavigate();
   
@@ -40,9 +41,9 @@ const UserProfile = () => {
         </div>
         <h1>Ameya Awatade</h1>
         <form className="form profile__form">
-          <p className="form__error-message">
-            This is an error message
-          </p>
+          {error && <p className="form__error-message">
+            {error}
+          </p>}
           <input type='text' placeholder='Full Name' name='name' value={name} onChange={e=>setName(e.target.value)}/>
           <input type='email' placeholder='Email' name='email' value={email} onChange={e=>setEmail(e.target.value)}/>
           <input type='password' placeholder='Current Password' name='password' value={currentPassword} onChange={e=>setCurrentPassword(e.target.value)}/>

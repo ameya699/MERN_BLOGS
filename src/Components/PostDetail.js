@@ -43,13 +43,13 @@ const PostDetail = () => {
       <div className='post-detail__header'>
         <PostAuthor authorID={post?.creator} createdAt={post.createdAt}/>
         {currentUser?.id == post?.creator && <div className='post-detail__buttons'>
-          <Link to={`/posts/werver/edit`} className='btn sm primary'>Edit</Link>
+          <Link to={`/posts/${post?._id}/edit`} className='btn sm primary'>Edit</Link>
           <DeletePost to={`/posts/werver/delete`} postId={id}>Delete</DeletePost>
         </div>}
         </div>
         <h1>{post.title}</h1>
         <div className='post-detail__thumbnail'>
-          <img src={`${process.env.REACT_APP_BASE_URL}/posts/thumbnail/${post.thumbnail}`} alt={`${process.env.REACT_APP_BASE_URL}/posts/thumbnail/${post.thumbnail}`}/>
+          <img src={`${process.env.REACT_APP_BASE_URL}/posts/thumbnail/${post.thumbnail}`} alt={`${process.env.REACT_APP_BASE_URL}/posts/thumbnail/${post.thumbnail}`} style={{maxHeight:"400px",aspectRatio:1/1,borderRadius:"12px"}}/>
         </div>
         <p dangerouslySetInnerHTML={{__html:post.description}}></p>
         </div>}
