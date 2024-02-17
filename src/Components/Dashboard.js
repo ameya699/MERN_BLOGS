@@ -1,17 +1,29 @@
 import React, { useContext, useEffect, useState } from 'react'
-import {DUMMY_POSTS} from "../data";
-import { Link, useNavigate } from 'react-router-dom';
+import DeletePost from './DeletePost';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { UserContext} from "../context/userContext";
+import axios from 'axios';
 const Dashboard = () => {
-  const [posts,setPosts]=useState(DUMMY_POSTS);
+  const [posts,setPosts]=useState([]);
   const {currentUser}=useContext(UserContext);
   const token=currentUser?.token;
   const navigate=useNavigate();
-  
+  const {id}=useParams();
+  const getAllPosts=async()=>{
+    try{
+      const response=await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/users/${id}`);
+    setPosts(response.data);
+    console.log(posts);
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
   useEffect(()=>{
     if(!token){
      navigate('/login');
     }
+    getAllPosts();
   },[])
   return (
     <section className='dashboard'>
@@ -24,15 +36,16 @@ const Dashboard = () => {
                
                <div className="dashboard__post-info">
                  <div className="dashboard__post-thumbnail">
-                   <img src={post.thumbnail}/>
+                   <img src={`${process.env.REACT_APP_BASE_URL}/posts/thumbnail/${post?.thumbnail}`} alt='thumbnail'/>
                  </div>
                  <h5>{post.title}</h5>
                </div>
                
                <div className="dashboard__post-actions">
-                 <Link to={`/posts/${post.id}`} className='btn sm'>View</Link>
-                 <Link to={`/posts/${post.id}/edit`} className='btn sm primary'>Edit</Link>
-                 <Link to={`/posts/${post.id}/delete`} className='btn sm danger'>Delete</Link>
+                 <Link to={`/posts/${post?._id}`} className='btn sm'>View</Link>
+                 <Link to={`/posts/${post?._id}/edit`} className='btn sm primary'>Edit</Link>
+                 <DeletePost postId={post?._id}>Delete</DeletePost>
+                 {/* <Link to={`/posts/${post?._id}/delete`} className='btn sm danger'>Delete</Link> */}
                </div>
              </article>
            })
