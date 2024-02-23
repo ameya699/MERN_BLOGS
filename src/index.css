@@ -494,6 +494,17 @@ input,select,textarea{
   height: 8rem;
 }
 
+.social-details{
+  display: flex;
+  justify-content: center;
+  column-gap: 3rem;
+  margin-bottom: 10px;
+}
+
+.social-icon{
+  color: var(--color-white);
+  font-size: 20px;
+}
 
 /*media queries*/
 

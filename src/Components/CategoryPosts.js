@@ -27,7 +27,7 @@ const CategoryPosts = () => {
 
     }
     fetchPosts();
-  },[])
+  },[category])
   return (
     <section className='posts'>
         {posts.length>0 ? <div className='container posts__container'>
